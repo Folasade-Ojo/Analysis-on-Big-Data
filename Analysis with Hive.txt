@@ -1,0 +1,138 @@
+-- download the "cars" dataset
+wget https://www.dropbox.com/s/ffkwf3ixq1mjk7q/cars.csv
+
+-- view the first 5 records
+head cars.csv
+
+-- copy the dataset into a hadoop directory
+hadoop fs -mkdir /bigdata
+hadoop fs -mkdir /bigdata/cars
+hadoop fs -copyFromLocal cars.csv /bigdata/cars
+
+-- initiate Hive
+hive
+
+-- create database
+CREATE DATABASE cars_db;
+USE cars_db;
+
+-- create a table called used_cars using the appropriate schemas
+CREATE EXTERNAL TABLE IF NOT EXISTS used_cars (
+ maker STRING,
+ model STRING,
+ mileage INT,
+ manufacture_year INT,
+ engine_displacement INT,
+ engine_power INT,
+ body_type STRING,
+ color_slug STRING,
+ stk_year STRING,
+ transmission STRING,
+ door_count STRING,
+ seat_count STRING,
+ fuel_type STRING,
+ date_created DATE,
+ date_last_seen DATE,
+ price_eur FLOAT)
+ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ LOCATION '/bigdata/cars/'
+ TBLPROPERTIES ("skip.header.line.count"="1");
+
+ --count the number of records
+SELECT COUNT(*) 
+FROM used_cars;
+
+-- To clean the data
+--write hive queries to determine the percentage of missing values in each attribute
+SELECT
+ROUND (100 * SUM(CASE WHEN maker = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN model = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN mileage IS NULL THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN manufacture_year IS NULL THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN engine_displacement IS NULL THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN engine_power IS NULL THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN body_type = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN color_slug = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN stk_year = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN transmission = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN door_count = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN seat_count = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN fuel_type = '' THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN date_created IS NULL THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN date_last_seen IS NULL THEN 1 ELSE 0 END)/COUNT (*),2),
+ROUND (100 * SUM(CASE WHEN price_eur IS NULL THEN 1 ELSE 0 END)/COUNT (*),2)
+FROM used_cars;
+
+--write hive queries to determine if there are single prices repeating across the ads
+SELECT price_eur, COUNT(price_eur)
+FROM used_cars
+GROUP BY price_eur
+ORDER BY COUNT(price_eur) DESC
+LIMIT 20;
+
+--color_slug and fuel_type had 94% and 52% null values respectively
+--The price ‘1295.34’ was repeated  673,623 times. The maximum number of times the other prices were repeated did not exceed 6609. This implies that there was an error during the scraping process regarding 1295.34
+
+--Create a new table called "clean_used_cars" by
+-- 1. dropping columns with more than 50% null values
+-- 2. The manufacture year between 2000 and 2017
+-- 3. There must not be any null records in the Maker and Model columns 
+-- 4. Price range is from 3000 to 2000000
+-- 5. Dropping any price that repeats too frequently
+
+CREATE TABLE clean_used_cars AS
+(SELECT maker, model, mileage, manufacture_year, engine_displacement, engine_power, body_type, stk_year, transmission, door_count, seat_count, date_created, date_last_seen, price_eur
+FROM used_cars
+WHERE manufacture_year BETWEEN 2000 AND 2017
+AND maker != ''
+AND model != ''
+AND price_eur BETWEEN 3000 AND 2000000
+AND price_eur != 1295.34); 
+
+SELECT COUNT(*) 
+FROM clean_used_cars;
+
+-- Top 10 makers and models by highest average price
+SELECT maker, model, ROUND(AVG (price_eur),2) AS top_10_manufacturers
+FROM clean_used_cars
+GROUP BY maker, model
+DISTRIBUTE BY top_10_manufacturers
+SORT BY top_10_manufacturers DESC
+LIMIT 10;
+
+-- Top 10 maker and model by lowest average price
+SELECT maker, model, ROUND(AVG (price_eur),2) AS least_10_manufacturers
+FROM clean_used_cars
+GROUP BY maker, model
+CLUSTER BY least_10
+LIMIT 10;
+
+-- Top 5 makers and models for the economic segment 
+--(price range; 3000<=price<20000)
+SELECT maker, model, ROUND(AVG(price_eur),2) AS economic_top_5
+FROM clean_used_cars
+GROUP BY maker, model
+HAVING AVG(price_eur)= 3000 AND AVG(price_eur) < 20000
+DISTRIBUTE BY economic_top_5
+SORT BY economic_top_5 DESC
+LIMIT 5;
+
+-- Top 5 makers and models for the intermediate segment 
+--(price range; 20000<=price<300000)
+SELECT maker, model, ROUND(AVG(price_eur),2) AS Intermediate_top_5
+FROM clean_used_cars
+GROUP BY maker, model
+HAVING AVG (price_eur) BETWEEN 20000 AND 300000
+DISTRIBUTE BY Intermediate_top_5
+SORT BY Intermediate_top_5 DESC
+LIMIT 5;
+
+-- Top 5 makers and models for the luxury segment 
+--(price range; 300000<=price<2000000)
+SELECT maker, model, ROUND(AVG(price_eur),2) AS Luxury_top_5
+FROM clean_used_cars
+GROUP BY maker, model
+HAVING AVG (price_eur) BETWEEN 300000 AND 2000000
+DISTRIBUTE BY Luxury_top_5
+SORT BY Luxury_top_5 DESC
+LIMIT 5;
