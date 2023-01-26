@@ -6,7 +6,7 @@ This project utilizes a dataset containing classified records of used cars from 
 Source: https://www.kaggle.com/datasets/mirosval/personal-cars-classifieds
 
 ## Tools used
-To handle the large dataset, I utilized Hadoop and Apache Hive to perform querying on Google Cloud Platform (GCP)
+To handle the large dataset, I utilized Hadoop and Apache Hive to perform querying on Google Cloud Platform (GCP).
 
 ## Tasks
 After creating the table in GCP terminal, the dataset was cleaned using several methods, including:
