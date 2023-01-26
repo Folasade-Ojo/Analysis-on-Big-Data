@@ -4,3 +4,4 @@ The repository contains analysis done in the Google Cloud Platform using the fol
 - Apache Hive
 * Apache Flume
 + Apache Kafka
+- Zookeeper
