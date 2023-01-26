@@ -76,12 +76,12 @@ LIMIT 20;
 The price ‘1295.34’ was repeated  673,623 times. The maximum number of times the other prices were repeated did not exceed 6609. This implies that there was an error during the scraping process regarding 1295.34
 */
 
-/* Create a new table called "clean_used_cars" by
- 1. dropping columns with more than 50% null values
- 2. The manufacture year between 2000 and 2017
- 3. There must not be any null records in the Maker and Model columns 
- 4. Price range is from 3000 to 2000000
- 5. Dropping any price that repeats too frequently
+/* To create a new table called "clean_used_cars", I 
+ 1. dropped columns with more than 50% null values
+ 2. Set the manufacture year between 2000 and 2017
+ 3. Ensured there are no null records in the Maker and Model columns 
+ 4. Set price range between 3000 to 2000000
+ 5. Dropped a single price that occurred too frequently
 */
 
 CREATE TABLE clean_used_cars AS
