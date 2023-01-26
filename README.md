@@ -1,4 +1,4 @@
-# Analysis with Hive
+# Used Cars Business
 
 ## Dataset
 This project utilizes a dataset containing classified records of used cars from various Eastern European countries spanning multiple years. The dataset, consisting of approximately 3.5 million rows and 16 columns, required cleaning and processing to provide data-driven insights for stakeholders interested in investing in the used car industry.
