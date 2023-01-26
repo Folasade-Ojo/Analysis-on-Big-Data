@@ -1,3 +1,6 @@
-# Projects
-This repository contains all the data analytics projects I have done.
-The highlighted skills are Hadoop, Apache Hive, Spark Dataframe, Big Data, Kafka, Python, R, and Statistics
+# Big Data
+The repository contains analysis done in the Google Cloud Platform using the following technologies
+
+- Apache Hive
+* Apache Flume
++ Apache Kafka
