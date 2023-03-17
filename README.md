@@ -39,11 +39,11 @@ This was achieved by
 ![image](https://user-images.githubusercontent.com/121362860/226039277-9656a8b6-44c0-4c57-9688-d66313168af7.png)
 
 ### Business Questions ###
-**TOP 10 CAR MAKERS AND MODELS**
+**TOP 10 CAR MAKERS AND MODELS BY AVERAGE PRICE**
 
 ![image](https://user-images.githubusercontent.com/121362860/226040981-9a8057bb-99d9-40b8-9592-5905f0f0efa1.png)
 
-**Cheapest Car Makers and Models**
+**TOP 10 CHEAPEST CAR MODELS**
 
 ![image](https://user-images.githubusercontent.com/121362860/226041582-1fcee8ac-2155-43b1-b9b0-592ba8e28011.png)
 
