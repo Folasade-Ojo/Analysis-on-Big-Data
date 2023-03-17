@@ -8,32 +8,65 @@ Source: https://www.kaggle.com/datasets/mirosval/personal-cars-classifieds
 ## Tools used
 To handle the large dataset, I utilized Hadoop and Apache Hive to perform querying on Google Cloud Platform (GCP).
 
-## Analysis
+## Exploration, Cleaning, and Analysis
 ### Data Exploration
 
-**Table creation**
+**Table creation in GCP**
 
 ![image](https://user-images.githubusercontent.com/121362860/226034424-b4fd0b26-7c3c-4301-8918-187dc78724fd.png)
 
 **Missing Values**
 
+*Color Slug* and *Fuel Type* had more than 50% null records.
+
 ![image](https://user-images.githubusercontent.com/121362860/226034274-ea2750db-d2a7-41c0-8d31-55dc5ca3fed3.png)
 
 **Single Price Occurence**
 
+The price ‘1295.34’ was repeated  673,623 times. The maximum number of times the other prices were repeated did not exceed 6609. This implies that there was an error during the scraping process regarding 1295.34 euro
 
 ![image](https://user-images.githubusercontent.com/121362860/226035962-0c3cf009-3235-4b28-9107-a0833c78df10.png)
 
+**Clean Table**
 
-After creating the table in GCP terminal, the dataset was cleaned using several methods, including:
-- Dropped columns with more than 50% null records.
-* Set the *manufacture year* to a range between 2000 and 2017.
-+ Ensured the *model* and *maker* columns had no null records.
-- Implemented a *price* range between 3000 and 2,000,000 euros.
-* Dropped any single *price* which was repeated multiple times across the ads.
+This was achieved by
+- Dropping columns with more than 50% null records (*color slug* and *fuel type*).
+* Setting the *manufacture year* to a range between 2000 and 2017.
++ Ensuring the *model* and *maker* columns had no null records.
+- Implementing a *price* range between 3000 and 2,000,000 euros.
+* Dropping any single *price* which was repeated multiple times across the ads (1295.34).
 
-Subsequently, I determined the top cars in terms of highest and lowest average price. Additionally, I segmented the customer base into three groups:
-- **Economic segment**: This represents customers willing to spend 3000 to 20,000 on a car.
-+ **Intermediate segment**: This represents customers willing to spend 20,000 to 300,000 on a car.
-* **Luxury segment**: This customer segment is willing to invest between 300,000 and 2,000,000 on a car.
+![image](https://user-images.githubusercontent.com/121362860/226039277-9656a8b6-44c0-4c57-9688-d66313168af7.png)
+
+### Business Questions ###
+**TOP 10 CAR MAKERS AND MODELS**
+
+![image](https://user-images.githubusercontent.com/121362860/226040981-9a8057bb-99d9-40b8-9592-5905f0f0efa1.png)
+
+**Cheapest Car Makers and Models**
+
+![image](https://user-images.githubusercontent.com/121362860/226041582-1fcee8ac-2155-43b1-b9b0-592ba8e28011.png)
+
+**TOP 5 CARS IN EACH CUSTOMER SEGMENT**
+
+This will be done by segmenting the customer base into three groups:
+
+***Economic Segment***
+
+*This represents customers willing to spend 3000 to 20,000 on a car.*
+
+![image](https://user-images.githubusercontent.com/121362860/226042711-0ba086ec-1b80-475a-a537-26349728cacb.png)
+
+***Intermediate Segment***
+
+*This represents customers willing to spend 20,000 to 300,000 on a car.*
+
+![image](https://user-images.githubusercontent.com/121362860/226043708-2d8f05b2-2c93-47e3-b8a6-974792f1fa6f.png)
+
+***Luxury Segment***
+
+*This customer segment is willing to invest between 300,000 and 2,000,000 on a car.*
+
+![image](https://user-images.githubusercontent.com/121362860/226043835-03f685f7-c170-4eb4-bc97-53b1675a1516.png)
+
 
