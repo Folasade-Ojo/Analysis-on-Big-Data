@@ -1,15 +1,14 @@
 # Used Cars Business
 
 ## Dataset
-This project focuses on an analysis on a dataset containing classified records of used cars from various Eastern European countries spanning multiple years. The dataset, consisting of approximately 3.5 million rows and 16 columns, required cleaning and processing to provide data-driven insights for stakeholders interested in investing in the used car industry.
+This project focuses on an analysis on a dataset containing classified records of used cars from various Eastern European countries spanning multiple years. The dataset, consisting of approximately 3.5 million rows and 16 columns, required cleaning and processing to answer some questions stakeholders interested in investing in the used car industry might want to know.
 
 Source: https://www.kaggle.com/datasets/mirosval/personal-cars-classifieds
 
-## Tools used
-To handle the large dataset, I utilized Hadoop and Apache Hive to perform querying on Google Cloud Platform (GCP).
+## Tools
+To handle the large dataset, I utilized **Hadoop** and **Apache Hive** to perform querying on **Google Cloud Platform (GCP)**.
 
-## Exploration, Cleaning, and Analysis
-### Data Exploration
+## Exploration and Cleaning 
 
 **Table creation in GCP**
 
@@ -23,7 +22,7 @@ To handle the large dataset, I utilized Hadoop and Apache Hive to perform queryi
 
 **Single Price Occurence**
 
-The price ‘1295.34’ was repeated  673,623 times. The maximum number of times the other prices were repeated did not exceed 6609. This implies that there was an error during the scraping process regarding 1295.34 euro
+The price of '1295.34' was found 673,623 times, which is significantly higher than the maximum number of times that any other price was repeated (6609). This suggests that there may have been an error during the scraping process specifically related to the price of 1295.34 euros.
 
 ![image](https://user-images.githubusercontent.com/121362860/226035962-0c3cf009-3235-4b28-9107-a0833c78df10.png)
 
@@ -38,7 +37,7 @@ This was achieved by
 
 ![image](https://user-images.githubusercontent.com/121362860/226039277-9656a8b6-44c0-4c57-9688-d66313168af7.png)
 
-### Business Questions ###
+## Business Questions
 **TOP 10 CAR MAKERS AND MODELS BY AVERAGE PRICE**
 
 ![image](https://user-images.githubusercontent.com/121362860/226040981-9a8057bb-99d9-40b8-9592-5905f0f0efa1.png)
