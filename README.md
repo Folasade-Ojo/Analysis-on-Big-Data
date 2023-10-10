@@ -16,15 +16,16 @@ To handle the large dataset, I utilized **Hadoop** and **Apache Hive** to perfor
 
 **Missing Values**
 
-*Color Slug* and *Fuel Type* had more than 50% null records.
-
 ![image](https://user-images.githubusercontent.com/121362860/226034274-ea2750db-d2a7-41c0-8d31-55dc5ca3fed3.png)
 
-**Single Price Occurence**
+*Color Slug* and *Fuel Type* had more than 50% null records.
 
-*The price of '1295.34' was found 673,623 times, which is significantly higher than the maximum number of times that any other price was repeated (6609). This suggests that there may have been an error during the scraping process specifically related to the price of 1295.34 euros.*
+**Checking for Duplicates**
+***Single Price Occurence***
 
 ![image](https://user-images.githubusercontent.com/121362860/226035962-0c3cf009-3235-4b28-9107-a0833c78df10.png)
+
+*The price of '1295.34' was found 673,623 times, which is significantly higher than the maximum number of times that any other price was repeated (6609). This suggests that there may have been an error during the scraping process specifically related to the price of 1295.34 euros.*
 
 **Clean Table**
 
