@@ -20,7 +20,8 @@ To handle the large dataset, I utilized **Hadoop** and **Apache Hive** to perfor
 
 *Color Slug* and *Fuel Type* had more than 50% null records.
 
-**Checking for Duplicates**
+**Duplicates**
+
 ***Single Price Occurence***
 
 ![image](https://user-images.githubusercontent.com/121362860/226035962-0c3cf009-3235-4b28-9107-a0833c78df10.png)
