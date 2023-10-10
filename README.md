@@ -32,7 +32,7 @@ To handle the large dataset, I utilized **Hadoop** and **Apache Hive** to perfor
 
 **Data Cleaning**
 
-This was achieved by creating a new table by implementing the following
+This was achieved by creating a new table and implementing the following
 - Dropping columns with more than 50% null records (*color slug* and *fuel type*).
 * Setting the *manufacture year* to a range between 2000 and 2017.
 + Ensuring the *model* and *maker* columns had no null records.
