@@ -79,5 +79,14 @@ Finally, Lamborghini Aventador and Porsche Carrera-gt are the only cars in the l
 
 ![image](https://user-images.githubusercontent.com/121362860/226043835-03f685f7-c170-4eb4-bc97-53b1675a1516.png)
 
+![image](https://github.com/Folasade-Ojo/Used-Cars-Business/assets/121362860/1642e5e0-c52e-4bc7-9898-155c10d21b42)
 
+**TOTAL AMOUNT REALISED IN EACH CATEGORY**
 
+Further findings showed that the higher the average price, the fewer the number of buyers. Consequently, more customers purchased cars in the economic segment which translated to more sales in that segment. On the other hand, the cars in the luxury segment were the least purchased cars. This reflects the state of the economy in general. 
+
+![image](https://github.com/Folasade-Ojo/Used-Cars-Business/assets/121362860/b8e11be6-9a60-4a32-9ba6-cf9fbc49652b)
+
+## Recommendation
+
+Due to inflation, the purchasing power of consumers tends to drop, and they typically buy based on their needs. *The top 1%*, however, can afford luxury goods more often than others. However, to maximize profit, working with some of the high-achieving manufacturers will attribute to more profitability for the firm. From the result gathered, investing heavily in the **Economic segment**, and not as much in the Intermediate or Luxury segment will yield more profit for the firm in the long run.
