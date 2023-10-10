@@ -1,5 +1,7 @@
 # Used Cars Business
 
+The used car business is highly competitive as there are ways to make a lot of money with low capital. Selling secondhand cars has proven to be more lucrative than selling new ones. According to National Automobile Dealerships Association, the average gross profit of a new car is $1,200, whereas that of a used car is $2,000. This line of work necessitates expertise in dealing with both people and cars.
+
 ## Dataset
 This project focuses on an analysis on a dataset containing classified records of used cars from various Eastern European countries spanning multiple years. The dataset, consisting of approximately 3.5 million rows and 16 columns, required cleaning and processing to answer some questions stakeholders interested in investing in the used car industry might want to know.
 
@@ -22,15 +24,15 @@ To handle the large dataset, I utilized **Hadoop** and **Apache Hive** to perfor
 
 **Duplicates**
 
-***Single Price Occurence***
+** Checking for multiple Price Occurence**
 
 ![image](https://user-images.githubusercontent.com/121362860/226035962-0c3cf009-3235-4b28-9107-a0833c78df10.png)
 
 *The price of '1295.34' was found 673,623 times, which is significantly higher than the maximum number of times that any other price was repeated (6609). This suggests that there may have been an error during the scraping process specifically related to the price of 1295.34 euros.*
 
-**Clean Table**
+**Data Cleaning**
 
-This was achieved by
+This was achieved by creating a table by implementing the following
 - Dropping columns with more than 50% null records (*color slug* and *fuel type*).
 * Setting the *manufacture year* to a range between 2000 and 2017.
 + Ensuring the *model* and *maker* columns had no null records.
@@ -40,34 +42,42 @@ This was achieved by
 ![image](https://user-images.githubusercontent.com/121362860/226039277-9656a8b6-44c0-4c57-9688-d66313168af7.png)
 
 ## Business Questions
+
+To obtain a bird’s eye view of the entire dataset, the top cars based on average price and cars with the least average price were identified. Lamborghini, Porsche, BMW, and Tesla were the top carmakers among the cars manufactured within the 17-year period, with Aventador, Carrera-gt, and z8 being the top 3 models in terms of average price. On the other hand, Kia Retona, Rover Streetwise, and Skoda Galaxy had the least average sales price. 
+
 **TOP 10 CAR MAKERS AND MODELS BY AVERAGE PRICE**
 
 ![image](https://user-images.githubusercontent.com/121362860/226040981-9a8057bb-99d9-40b8-9592-5905f0f0efa1.png)
+
+![image](https://github.com/Folasade-Ojo/Used-Cars-Business/assets/121362860/6738436f-0006-4d18-b72f-f4212ad45190)
 
 **TOP 10 CHEAPEST CAR MODELS**
 
 ![image](https://user-images.githubusercontent.com/121362860/226041582-1fcee8ac-2155-43b1-b9b0-592ba8e28011.png)
 
-**TOP 5 CARS IN EACH CUSTOMER SEGMENT**
+![image](https://github.com/Folasade-Ojo/Used-Cars-Business/assets/121362860/38325b9e-922d-4633-81f3-704baaec158a)
 
-This will be done by segmenting the customer base into three groups:
+**TOP 5 MANUFACTURERS IN EACH CUSTOMER SEGMENT**
+
+One of the key factors to consider is the top manufacturer in each customer segment. 
 
 ***Economic Segment***
 
-*This represents customers willing to spend 3000 to 20,000 on a car.*
+Cars ranging from 3000€ to 19999€ are typically purchased by customers in the economic segment. The top car manufacturer in this segment in terms of average price is the Volvo v40. The least-performing manufacturer in this segment is the Skoda Galaxy.
 
 ![image](https://user-images.githubusercontent.com/121362860/226042711-0ba086ec-1b80-475a-a537-26349728cacb.png)
 
 ***Intermediate Segment***
 
-*This represents customers willing to spend 20,000 to 300,000 on a car.*
+For customers in the intermediate category, cars within the price range of 20,000€ and 300,000€ were analyzed. From the information gathered, the BMW z8 has had the highest average sales over the years at proximately 245000€. 
 
 ![image](https://user-images.githubusercontent.com/121362860/226043708-2d8f05b2-2c93-47e3-b8a6-974792f1fa6f.png)
 
 ***Luxury Segment***
 
-*This customer segment is willing to invest between 300,000 and 2,000,000 on a car.*
+Finally, Lamborghini Aventador and Porsche Carrera-gt are the only cars in the luxury segment (300,000€-2,000,000€). They are sold at an average price of approximately 366000€ and 302000€ respectively.
 
 ![image](https://user-images.githubusercontent.com/121362860/226043835-03f685f7-c170-4eb4-bc97-53b1675a1516.png)
+
 
 
