@@ -89,4 +89,4 @@ Further findings showed that the higher the average price, the fewer the number 
 
 ## Recommendation
 
-Due to inflation, the purchasing power of consumers tends to drop, and they typically buy based on their needs. *The top 1%*, however, can afford luxury goods more often than others. However, to maximize profit, working with some of the high-achieving manufacturers will attribute to more profitability for the firm. From the result gathered, investing heavily in the **Economic segment**, and not as much in the Intermediate or Luxury segment will yield more profit for the firm in the long run.
+Due to inflation, the purchasing power of consumers tends to drop, and they typically buy based on their needs. *The top 1%*, however, can afford luxury goods more often than others. Furthermore, to maximize profit, working with some of the high-achieving manufacturers will attribute to more profitability for the firm. From the result gathered, investing heavily in the **Economic segment**, and not as much in the Intermediate or Luxury segment will yield more profit for the firm in the long run.
